@@ -130,6 +130,28 @@ img {
   visibility: visible !important;
 }
 
+@media (max-width: 1024px) {
+  .logo-image {
+    height: 28px;
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-image {
+    height: 24px;
+    max-width: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-image {
+    height: 20px;
+    max-width: 140px;
+  }
+}
+
+
 /* Container */
 .container {
   width: 100%;
