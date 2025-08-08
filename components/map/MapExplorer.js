@@ -217,6 +217,10 @@ const MapExplorer = ({ events = [], onEventAdded, onEventDeleted, isAuthenticate
             <span className="btn-icon">📍</span>
             <span className="btn-text">Find Nearby</span>
           </button>
+          <button className="btn-nearby" onClick={() => navigate("/add-event")}>
+            <span className="btn-icon">➕</span>
+            <span className="btn-text">Add Event</span>
+          </button>
         </div>
         
         <div className="filter-controls">
