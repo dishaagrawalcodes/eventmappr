@@ -366,6 +366,24 @@ const MapExplorer = ({
   return (
     <div className="map-explorer">
       <div className="map-controls">
+
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Search events..."
+            value={searchQuery}
+            onChange={handleSearch}
+            className="search-input"
+          />
+          <button className="btn-nearby" onClick={findNearby}>
+            <span className="btn-icon">📍</span>
+            <span className="btn-text">Find Nearby</span>
+          </button>
+          <button className="btn-nearby" onClick={() => navigate("/add-event")}>
+            <span className="btn-icon">➕</span>
+            <span className="btn-text">Add Event</span>
+          </button>
+
         <div className="search-parent">
           <div className="search-bar">
             <input
@@ -401,6 +419,7 @@ const MapExplorer = ({
               </span>
             )}
           </div>
+
         </div>
 
         <div className="filter-controls">
