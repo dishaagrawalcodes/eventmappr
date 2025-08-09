@@ -30,19 +30,15 @@ export default function AuthPage() {
   useEffect(() => {
     const initAuth = async () => {
       try {
-        console.log("Starting Firebase initialization...");
         const app = initializeFirebase();
         if (app) {
-          console.log("Firebase app created, getting auth instance...");
           const authInstance = getAuth(app);
           setAuth(authInstance);
           setFirebaseLoaded(true);
-          console.log("Auth instance set successfully");
 
           // Check if user is already logged in
           const unsubscribe = onAuthStateChanged(authInstance, (user) => {
             if (user) {
-              console.log("User already logged in:", user.email);
               router.push("/");
             }
           });
