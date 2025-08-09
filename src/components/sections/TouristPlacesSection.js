@@ -274,9 +274,9 @@ export default function TouristPlacesSection() {
         }
 
         .hero-button {
-          background: var(black);
-          color: white;
-          border: none;
+          background: #82aae9ff;
+          color: black;
+          border: 2px solid #5f8edaff;
           padding: 14px 28px;
           border-radius: 12px;
           font-size: 1rem;
@@ -286,7 +286,7 @@ export default function TouristPlacesSection() {
           gap: 8px;
           cursor: pointer;
           transition: all 0.2s ease;
-          box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+          box-shadow: 0 0 2px #457dd6ff;
         }
 
         .hero-button:hover {
