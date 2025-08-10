@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+
+import React, {useState} from "react";
 import Link from "next/link";
+import {Plane, Send, SendIcon} from "lucide-react";
+
 
 const FAQSection = () => {
   const faqs = [
@@ -118,7 +121,12 @@ const FAQSection = () => {
                 rows={3}
               />
               <button type="submit" className="get-in-touch-send-btn">
-                Send <span className="send-icon">✈️</span>
+                <span className="send-label">
+                  Send
+                  <span className="send-icon">
+                    <SendIcon size={20} color="#000" />
+                  </span>
+                </span>
               </button>
             </form>
           </div>
@@ -245,7 +253,7 @@ const FAQSection = () => {
 
         .faq-section {
           padding: 5rem 0;
-          background-color: var(--background);
+          background: linear-gradient(to left, var(--contrast1), var(--contrast2), var(--contrast3));
           position: relative;
           overflow: hidden;
         }
@@ -367,7 +375,7 @@ const FAQSection = () => {
 
         .faq-cta {
           text-align: center;
-          margin-top: 3rem;
+          margin-top: 8rem;
         }
 
         .faq-cta p {
@@ -430,13 +438,13 @@ const FAQSection = () => {
         }
 
         .btn-icon {
-          margin-right: 0.8rem;
+          margin-right: 0.35rem;
           font-size: 1.2rem;
           transition: transform 0.3s ease;
         }
 
         .bubble-btn:hover .btn-icon {
-          transform: scale(1.2);
+          transform: scale(1.05);
         }
 
         .btn-text {
@@ -466,6 +474,36 @@ const FAQSection = () => {
           .section-title {
             font-size: 1.8rem;
           }
+        }
+
+        .get-in-touch-send-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem; /* space between text and icon */
+          padding: 0.6rem 1.2rem;
+          border: none;
+          background: var(--primary);
+          color: white;
+          font-weight: 600;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: background 0.3s ease;
+        }
+
+        .get-in-touch-send-btn:hover {
+          background: var(--primary-dark);
+        }
+
+        .send-label {
+          display: inline-flex;
+          align-items: center;
+        }
+
+        .send-icon {
+          display: inline-flex;
+          margin-left: 0.4rem;
+          position: relative;
+          top: 1px; /* adjust vertically if needed */
         }
       `}</style>
     </section>

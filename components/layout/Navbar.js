@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { NAV_ITEMS, ROUTES } from "../../utils/routes";
+import { Sun, Moon } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -105,9 +106,8 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`navbar ${isScrolled ? "scrolled" : ""} ${
-        isDarkMode ? "dark" : ""
-      }`}
+      className={`navbar ${isScrolled ? "scrolled" : ""} ${isDarkMode ? "dark" : ""
+        }`}
     >
       <div className="navbar-blur"></div>
       <div className="container navbar-container">
@@ -147,7 +147,7 @@ const Navbar = () => {
                   router.pathname === "/currency-converter" ? "active" : ""
                 }
               >
-                <i className="fas fa-coins" /> 
+                <i className="fas fa-coins" />
                 Currency Converter
               </a>
             </Link>
@@ -165,7 +165,11 @@ const Navbar = () => {
               aria-label="Toggle theme"
               className="theme-btn"
             >
-              {isDarkMode ? "☀️" : "🌙"}
+              {isDarkMode ? (
+                <Sun size={20} color="#fbbf24" /> // light yellow
+              ) : (
+                <Moon size={20} color="#1e3a8a" /> // dark blue
+              )}
             </button>
           </li>
           {user ? (
@@ -239,8 +243,8 @@ const Navbar = () => {
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
           background: ${isDarkMode
-            ? "linear-gradient(to bottom, rgba(18, 18, 24, 0.75), rgba(18, 18, 24, 0.65))"
-            : "linear-gradient(to bottom, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.65))"};
+          ? "linear-gradient(to bottom, rgba(18, 18, 24, 0.75), rgba(18, 18, 24, 0.65))"
+          : "linear-gradient(to bottom, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.65))"};
           border-bottom: 1px solid
             ${isDarkMode ? "rgba(255, 255, 255, 0.05)" : "rgba(0, 0, 0, 0.05)"};
           z-index: -1;
@@ -255,8 +259,8 @@ const Navbar = () => {
           box-shadow: 0 4px 30px
             ${isDarkMode ? "rgba(0, 0, 0, 0.3)" : "rgba(0, 0, 0, 0.1)"};
           background: ${isDarkMode
-            ? "linear-gradient(to bottom, rgba(18, 18, 24, 0.85), rgba(18, 18, 24, 0.8))"
-            : "linear-gradient(to bottom, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.8))"};
+          ? "linear-gradient(to bottom, rgba(18, 18, 24, 0.85), rgba(18, 18, 24, 0.8))"
+          : "linear-gradient(to bottom, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.8))"};
         }
 
         .navbar-container {
@@ -273,6 +277,7 @@ const Navbar = () => {
         .logo {
           display: flex;
           align-items: center;
+          justify-content:flex-start;
           cursor: pointer;
           position: relative;
           z-index: 2;
@@ -281,13 +286,13 @@ const Navbar = () => {
           margin-left: -1rem;
         }
 
-        .logo-image {
+     .logo-image {
           height: 32px;
           width: auto;
           max-width: 200px;
           transition: transform 0.3s ease;
-        }
-
+          display: block;
+       }             
         .logo:hover .logo-image {
           transform: scale(1.05);
         }
@@ -356,8 +361,8 @@ const Navbar = () => {
         .nav-links li a.active {
           color: var(--primary);
           background-color: ${isDarkMode
-            ? "rgba(255, 255, 255, 0.05)"
-            : "rgba(0, 0, 0, 0.03)"};
+          ? "rgba(255, 255, 255, 0.05)"
+          : "rgba(0, 0, 0, 0.03)"};
         }
 
         .nav-links li a:hover::after,
@@ -392,8 +397,8 @@ const Navbar = () => {
           justify-content: center;
           transition: all 0.3s ease;
           background-color: ${isDarkMode
-            ? "rgba(255, 255, 255, 0.1)"
-            : "rgba(0, 0, 0, 0.05)"};
+          ? "rgba(255, 255, 255, 0.1)"
+          : "rgba(0, 0, 0, 0.05)"};
           width: 40px;
           height: 40px;
         }
@@ -401,8 +406,8 @@ const Navbar = () => {
         .theme-btn:hover {
           transform: rotate(15deg) scale(1.1);
           background-color: ${isDarkMode
-            ? "rgba(255, 255, 255, 0.2)"
-            : "rgba(0, 0, 0, 0.1)"};
+          ? "rgba(255, 255, 255, 0.2)"
+          : "rgba(0, 0, 0, 0.1)"};
         }
 
         .btn-sign-in {
@@ -490,8 +495,8 @@ const Navbar = () => {
 
         .btn-sign-out:hover {
           background-color: ${isDarkMode
-            ? "rgba(255, 255, 255, 0.1)"
-            : "rgba(0, 0, 0, 0.05)"};
+          ? "rgba(255, 255, 255, 0.1)"
+          : "rgba(0, 0, 0, 0.05)"};
           transform: translateY(-1px);
         }
 
@@ -523,7 +528,7 @@ const Navbar = () => {
           .navbar-container {
             padding: 0 1.5rem;
           }
-          
+
           .nav-links li {
             padding: 0 0.75rem;
           }
@@ -549,8 +554,8 @@ const Navbar = () => {
             justify-content: flex-start;
             align-items: stretch;
             background: ${isDarkMode
-              ? "rgba(18, 18, 24, 0.95)"
-              : "rgba(255, 255, 255, 0.95)"};
+          ? "rgba(18, 18, 24, 0.95)"
+          : "rgba(255, 255, 255, 0.95)"};
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             padding: 6rem 2rem 2rem 2rem;
