@@ -1,6 +1,8 @@
+
 import React, {useState} from "react";
 import Link from "next/link";
 import {Plane, Send, SendIcon} from "lucide-react";
+
 
 const FAQSection = () => {
   const faqs = [
@@ -144,7 +146,7 @@ const FAQSection = () => {
           padding: 2.5rem 2rem;
         }
         :global(body.light) .faq-get-in-touch {
-          background: #f8f9fb;
+          background: #fff !important;
         }
         .get-in-touch-title {
           font-size: 2.4rem;
@@ -160,18 +162,14 @@ const FAQSection = () => {
           width: 100%;
           padding: 0.9rem 1.2rem;
           border-radius: 8px;
-          border: none;
+          border: none
           outline: none;
-          background: #23243a;
-          color: #fff;
+          background: var(--input-bg);
+          color: var(--input-color);
           font-size: 1rem;
           margin-bottom: 0.2rem;
         }
-        :global(body.light) .get-in-touch-input {
-          background: #fff;
-          color: #181b2a;
-          border: 1px solid #e0e6ed;
-        }
+
         .faq-get-in-touch-left {
           flex: 1;
           display: flex;
@@ -209,17 +207,12 @@ const FAQSection = () => {
           flex-direction: column;
           gap: 1rem;
         }
-        .get-in-touch-input {
-          width: 100%;
-          padding: 0.9rem 1.2rem;
-          border-radius: 8px;
-          border: none;
-          outline: none;
-          background: #23243a;
-          color: #fff;
-          font-size: 1rem;
-          margin-bottom: 0.2rem;
+        :global(body.light) .get-in-touch-form {
+          background: #ffffff !important;
+          color: #181b2a !important;
+          border: 1px solid #e0e6ed;
         }
+
         .get-in-touch-send-btn {
           width: 100%;
           padding: 0.9rem 1.2rem;
