@@ -201,7 +201,7 @@ const HeroSection = () => {
         }
         
         .primary-glass {
-          background: rgba(var(--primary-rgb), 0.7);
+          background: rgba(var(--primary-rgb), 0.95);
           color: white;
           box-shadow: 0 8px 32px rgba(var(--primary-rgb), 0.3);
         }
