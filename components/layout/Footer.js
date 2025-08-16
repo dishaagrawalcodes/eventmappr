@@ -35,7 +35,7 @@ const Footer = () => {
               <h4 className="link-title">Site Map</h4>
               <ul className="link-list">
                 {FOOTER_NAV_ITEMS.map((item, index) => (
-                  <li key={index}>
+                  <li key={index} className="footer-link">
                     <Link href={item.path}>
                       {item.name}
                     </Link>
@@ -47,9 +47,15 @@ const Footer = () => {
               <div className="nav-group">
                 <h4 className="link-title">Legal</h4>
                 <ul className="link-list">
-                  <li><Link href="/privacy">Privacy Policy</Link></li>
-                  <li><Link href="/terms">Terms of Service</Link></li>
-                  <li><Link href="/cookies">Cookie Policy</Link></li>
+                  <li className="footer-link">
+                    <Link href="/privacy">Privacy Policy</Link>
+                  </li>
+                  <li className="footer-link">
+                    <Link href="/terms">Terms of Service</Link>
+                  </li>
+                  <li className="footer-link">
+                    <Link href="/cookies">Cookie Policy</Link>
+                  </li>
                 </ul>
               </div>
               <div className="social-group">
@@ -85,6 +91,33 @@ const Footer = () => {
       </div>
 
       <style jsx>{`
+      
+        .footer-link {
+            position: relative;
+            color: #f6f4f3ff; 
+            text-decoration: none;
+            transition: color 0.3s ease;
+          }
+
+          .footer-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px; /* thickness of the underline */
+            bottom: 0;
+            left: 0;
+            background-color: #d2691e; /* same as text color */
+            transition: width 0.3s ease;
+          }
+
+          .footer-link:hover {
+            color: #b85c1b; /* optional: change text color on hover */
+          }
+
+          .footer-link:hover::after {
+            width: 100%;
+          }
+
         .footer {
           background-color: #0d1117;
           color: #e6e6e6;
@@ -241,6 +274,7 @@ const Footer = () => {
             text-align: center;
             gap: 0.5rem;
           }
+          
         }
       `}</style>
     </footer>
