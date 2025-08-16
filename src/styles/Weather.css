@@ -677,10 +677,9 @@ body {
     outline: 2px solid #f1c40f;
     outline-offset: 2px;
 }
-
-.forecast-card {
-    tabindex: 0;
-}
+ /* .forecast-card {
+   tabindex: 0; 
+ } */
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
