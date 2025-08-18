@@ -23,6 +23,8 @@ const Button = ({ children, onClick, type = 'submit', className = '' }) => (
         box-shadow: 0 8px 25px rgba(76, 102, 245, 0.3);
       }
       .btn:hover {
+        background: linear-gradient(135deg, #3a0ca3 0%, #4c66f5 100%);
+
         transform: translateY(-3px);
         box-shadow: 0 12px 35px rgba(76, 102, 245, 0.45);
       }
@@ -85,8 +87,9 @@ const ContactForm = () => {
           padding: 2.5rem;
           background-color: #f8f9ff;
           border-radius: 16px;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 10px 30px rgba(102, 129, 196, 0.77);
           transition: background-color 0.5s ease;
+          border: 1px solid #6179ffff;
         }
         .input-group {
           display: flex;
@@ -101,7 +104,7 @@ const ContactForm = () => {
         input, textarea {
           padding: 1rem;
           border-radius: 8px;
-          border: 1px solid #e0e0e0;
+          border: 1px solid #b1b1b1ff;
           font-size: 1rem;
           background-color: #ffffff;
           transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.5s ease, color 0.5s ease;
@@ -526,7 +529,7 @@ const ContactPage = () => {
           z-index: 20;
           margin: 4rem auto 5rem;
           padding: 3rem;
-          background: #ffffff;
+background: linear-gradient(135deg, #b5d0fce7, #ffffff);
           border-radius: 24px;
           box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
           transition: background 0.5s ease, box-shadow 0.5s ease;
@@ -541,11 +544,12 @@ const ContactPage = () => {
           color: #1a1a2e;
           margin-bottom: 0.5rem;
           transition: color 0.5s ease;
+          text-align: center;
         }
         .section-subtitle {
-          font-size: 1.1rem;
+          font-size: 0.9rem;
           color: #6a6a80;
-          margin-bottom: 2.5rem;
+          margin-bottom: 3rem;
           transition: color 0.5s ease;
         }
         .info-list {
