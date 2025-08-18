@@ -82,11 +82,20 @@ const HeroSection = () => {
                 <span className="btn-text">Explore Map</span>
               </span>
             </Link>
+
+           <Link href="/faq" legacyBehavior>
+  <a className="glass-btn secondary-glass">
+    <span className="btn-text">Learn More</span>
+  </a>
+</Link>
+
+
             <Link href={ROUTES.ABOUT}>
               <span className="glass-btn secondary-glass">
                 <span className="btn-text">Learn More</span>
               </span>
             </Link>
+
           </div>
           
           <div className="hero-stats" data-aos="fade-up" data-aos-delay="800">
