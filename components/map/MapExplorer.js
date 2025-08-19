@@ -425,7 +425,7 @@ const MapExplorer = ({
                   {category === "Art" && "🎨"}
                   {category === "Sports" && "🏆"}
                   {category === "Education" && "📚"}
-                 
+                  {/* ADDED: Emojis for the new filter buttons */}
                   {category === "Comedy & Shows" && "🎭"}
                   {category === "Wellness" && "🧘"}
                 </span>
@@ -541,12 +541,12 @@ const MapExplorer = ({
 
           <GpsButton />
 
-        
+          {/* Nearby Restaurants & Hotels Markers */}
           {showNearby && userLocation && (
             <NearbyPlaces userLocation={userLocation} />
           )}
 
-       
+          {/* Marker Legend */}
           {showNearby && (
             <div
               style={{
@@ -561,7 +561,6 @@ const MapExplorer = ({
                 fontSize: "0.98rem",
               }}
             >
-
               <span style={{ marginRight: 12 }}>
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png"
