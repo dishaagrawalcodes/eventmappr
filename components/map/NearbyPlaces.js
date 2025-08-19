@@ -117,19 +117,19 @@ export default function NearbyPlaces({ userLocation, radius = 1200, showNotifica
     fetchNearbyPlaces();
   }, [fetchNearbyPlaces]);
 
-  const getPlaceIcon = (place) => {
-    if (!place.tags) return placeIcons.default;
-    
-    const amenity = place.tags.amenity;
-    const tourism = place.tags.tourism;
-    
-    if (amenity === 'restaurant' || amenity === 'cafe' || amenity === 'fast_food' || amenity === 'bar' || amenity === 'pub') {
-      return placeIcons.restaurant;
-    } else if (tourism === 'hotel' || tourism === 'guest_house') {
-      return placeIcons.hotel;
-    }
-    
-    return placeIcons.default;
+  const getPlaceIcon2 = (place) => {
+   if (!place.tags) return placeIcons.default;
+  
+  const { amenity, tourism } = place.tags;
+
+  if (amenity === 'restaurant') return placeIcons.restaurant;
+  if (amenity === 'cafe' || amenity === 'fast_food') return placeIcons.cafe;
+  if (amenity === 'bar' || amenity === 'pub') return placeIcons.bar;
+  if (tourism === 'hotel' || tourism === 'guest_house') return placeIcons.hotel;
+
+  return placeIcons.default;
+};
+
   };
 
   const getPlaceName = (place) => {
@@ -294,7 +294,7 @@ export default function NearbyPlaces({ userLocation, radius = 1200, showNotifica
         <Marker
           key={`${place.id}-${place.lat}-${place.lon}`}
           position={[place.lat, place.lon]}
-          icon={getPlaceIcon(place)}
+          icon={getPlaceIcon2(place)}
         >
           <Popup className="custom-popup">
             <div className="popup-content">
