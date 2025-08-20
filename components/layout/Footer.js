@@ -142,15 +142,24 @@ const Footer = () => {
         }
 
         .logo-section {
-          flex-basis: 30%;
-          min-width: 200px;
-        }
+  flex-basis: 30%;
+  min-width: 200px;
+  background: rgba(255, 255, 255, 0.05); /* subtle background highlight */
+  padding: 1rem;
+  border-radius: 12px;
+  display: inline-block;
+}
 
-        .logo {
-          width: 200px;
-          height: auto;
-          margin-bottom: 1rem;
-        }
+.logo {
+  width: 200px;
+  height: auto;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6)); /* glow effect */
+}
+.logo {
+  filter: brightness(0) invert(1);
+}
+
 
         .description {
           font-size: 0.9rem;
