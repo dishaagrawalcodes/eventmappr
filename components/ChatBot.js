@@ -1,8 +1,9 @@
-import {MessageSquare} from "lucide-react";
-import React, {useState, useRef, useEffect} from "react";
+import { MessageSquare } from "lucide-react";
+import React, { useState, useRef, useEffect } from "react";
 
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const chatbotContainerRef = useRef(null);
   const [messages, setMessages] = useState([
     {
       text: "Hi there! 👋 How can I help you with EventMappr today?",
@@ -21,8 +22,25 @@ const ChatBot = () => {
     scrollToBottom();
   }, [messages]);
 
+  // Close chatbot when clicking outside
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleClickOutside = (event) => {
+      if (
+        chatbotContainerRef.current &&
+        !chatbotContainerRef.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
+
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({behavior: "smooth"});
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const toggleChat = () => {
@@ -147,7 +165,7 @@ Question: `;
 
     if (!inputValue.trim()) return;
 
-    const userMessage = {text: inputValue, isBot: false};
+    const userMessage = { text: inputValue, isBot: false };
     setMessages((prev) => [...prev, userMessage]);
     setInputValue("");
     setIsTyping(true);
@@ -155,7 +173,7 @@ Question: `;
     const botResponse = await generateGeminiResponse(inputValue);
 
     setTimeout(() => {
-      setMessages((prev) => [...prev, {text: botResponse, isBot: true}]);
+      setMessages((prev) => [...prev, { text: botResponse, isBot: true }]);
       setIsTyping(false);
     }, 300);
   };
@@ -171,7 +189,7 @@ Question: `;
       </button>
 
       {isOpen && (
-        <div className="chatbot-container">
+        <div className="chatbot-container" ref={chatbotContainerRef}>
           <div className="chatbot-header">
             <h3>EventMappr Assistant</h3>
             <span className="chatbot-status">Online</span>
