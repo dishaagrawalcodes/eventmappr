@@ -23,6 +23,8 @@ const Button = ({ children, onClick, type = 'submit', className = '' }) => (
         box-shadow: 0 8px 25px rgba(76, 102, 245, 0.3);
       }
       .btn:hover {
+        background: linear-gradient(135deg, #3a0ca3 0%, #4c66f5 100%);
+
         transform: translateY(-3px);
         box-shadow: 0 12px 35px rgba(76, 102, 245, 0.45);
       }
@@ -83,10 +85,11 @@ const ContactForm = () => {
           flex-direction: column;
           gap: 1.5rem;
           padding: 2.5rem;
-          background-color: #f8f9ff;
+          background-color: #1a1a2e; /* Darker form background for contrast */
           border-radius: 16px;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Stronger shadow */
           transition: background-color 0.5s ease;
+          border: 1px solid rgba(76, 102, 245, 0.2);
         }
         .input-group {
           display: flex;
@@ -94,22 +97,23 @@ const ContactForm = () => {
         }
         label {
           font-weight: 600;
-          color: #4a4a6a;
+          color: #b0b0b0; /* Lighter label color */
           margin-bottom: 0.5rem;
           transition: color 0.5s ease;
         }
         input, textarea {
           padding: 1rem;
           border-radius: 8px;
-          border: 1px solid #e0e0e0;
+          border: 1px solid #3b3b50; /* Darker border */
           font-size: 1rem;
-          background-color: #ffffff;
+          background-color: #2b2b40; /* Darker input background */
+          color: white; /* White text color */
           transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.5s ease, color 0.5s ease;
         }
         input:focus, textarea:focus {
           outline: none;
-          border-color: #4c66f5;
-          box-shadow: 0 0 0 3px rgba(76, 102, 245, 0.15);
+          border-color: #5a7eff; /* Brighter focus color */
+          box-shadow: 0 0 0 3px rgba(90, 126, 255, 0.3); /* More vibrant focus shadow */
         }
       `}</style>
     </form>
@@ -122,7 +126,6 @@ const ContactPage = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    // Check localStorage for theme first
     const storedTheme = localStorage.getItem('theme');
     if (storedTheme === 'dark') {
       setIsDarkMode(true);
@@ -134,7 +137,6 @@ const ContactPage = () => {
   }, []);
 
   useEffect(() => {
-    // Apply or remove the dark-mode class on the html element and persist to localStorage
     if (isDarkMode) {
       document.documentElement.classList.add('dark-mode');
       localStorage.setItem('theme', 'dark');
@@ -165,15 +167,7 @@ const ContactPage = () => {
       </Head>
 
       <div className="contact-page">
-        {/* Modern Hero Section with animated elements and a theme toggle */}
         <section className="hero-section">
-          {/*<button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle dark mode">
-            {isDarkMode ? (
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-            ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-            )}
-          </button>*/}
           <div className="hero-grid container">
             <div className="hero-content" data-aos="fade-up" data-aos-delay="50">
               <h1 className="hero-heading">
@@ -207,48 +201,67 @@ const ContactPage = () => {
           </div>
         </section>
 
-        {/* Main Content Area with two-column layout */}
         <main className="content-wrapper container">
-          <section className="contact-section">
-            <div className="info-column" data-aos="fade-right">
-              <h2>Contact Information</h2>
-              <p className="section-subtitle">
-                Find the best way to get in touch with us. We're here to help!
-              </p>
-              <ul className="info-list">
-                <li data-aos="fade-right" data-aos-delay="100">
-                  <div className="icon-circle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                  </div>
-                  <div>
-                    <h4>Email Address</h4>
-                    <p>hello@eventmappr.com</p>
-                  </div>
-                </li>
-                <li data-aos="fade-right" data-aos-delay="200">
-                  <div className="icon-circle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2.06A19.85 19.85 0 0 1 1.84 2.82 2.18 2.18 0 0 1 4 2h3a2 2 0 0 1 2 2v3.18a3 3 0 0 1-1 2.22l-1.6 1.6a15.02 15.02 0 0 0 8.6 8.6l1.6-1.6a3 3 0 0 1 2.22-1H19a2 2 0 0 1 2 2z"></path></svg>
-                  </div>
-                  <div>
-                    <h4>Phone Number</h4>
-                    <p>+1 (555) 123-4567</p>
-                  </div>
-                </li>
-                <li data-aos="fade-right" data-aos-delay="300">
-                  <div className="icon-circle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                  </div>
-                  <div>
-                    <h4>Our Location</h4>
-                    <p>123 Event Ave, Suite 456, Mappr City, MC 90210</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div className="form-column" data-aos="fade-left">
-              <ContactForm />
-            </div>
-          </section>
+          <section className="contact-section grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto px-6 md:px-12 py-16">
+  {/* Left Info Column */}
+  <div className="info-column space-y-8" data-aos="fade-right">
+    <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
+      Contact Information
+    </h2>
+    <p className="section-subtitle text-lg text-gray-600 dark:text-gray-400">
+      Find the best way to get in touch with us. We're here to help!
+    </p>
+
+    <ul className="info-list space-y-6">
+      {/* Email */}
+      <li className="flex items-center gap-4 bg-white dark:bg-gray-800 p-5 rounded-2xl shadow-md hover:shadow-lg transition" data-aos="fade-right" data-aos-delay="100">
+        <div className="icon-circle flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300">
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+        </div>
+        <div>
+          <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Email Address</h4>
+          <p className="text-gray-600 dark:text-gray-400">hello@eventmappr.com</p>
+        </div>
+      </li>
+
+      {/* Phone */}
+      <li className="flex items-center gap-4 bg-white dark:bg-gray-800 p-5 rounded-2xl shadow-md hover:shadow-lg transition" data-aos="fade-right" data-aos-delay="200">
+        <div className="icon-circle flex items-center justify-center w-12 h-12 rounded-full bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300">
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2.06A19.85 19.85 0 0 1 1.84 2.82 2.18 2.18 0 0 1 4 2h3a2 2 0 0 1 2 2v3.18a3 3 0 0 1-1 2.22l-1.6 1.6a15.02 15.02 0 0 0 8.6 8.6l1.6-1.6a3 3 0 0 1 2.22-1H19a2 2 0 0 1 2 2z" />
+          </svg>
+        </div>
+        <div>
+          <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Phone Number</h4>
+          <p className="text-gray-600 dark:text-gray-400">+1 (555) 123-4567</p>
+        </div>
+      </li>
+
+      {/* Location */}
+      <li className="flex items-center gap-4 bg-white dark:bg-gray-800 p-5 rounded-2xl shadow-md hover:shadow-lg transition" data-aos="fade-right" data-aos-delay="300">
+        <div className="icon-circle flex items-center justify-center w-12 h-12 rounded-full bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-300">
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+        </div>
+        <div>
+          <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Our Location</h4>
+          <p className="text-gray-600 dark:text-gray-400">123 Event Ave, Suite 456, Mappr City, MC 90210</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  {/* Right Form Column */}
+  <div className="form-column bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-md hover:shadow-lg transition" data-aos="fade-left">
+    <ContactForm />
+  </div>
+</section>
+
         </main>
       </div>
 
@@ -261,8 +274,8 @@ const ContactPage = () => {
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
           overflow-x: hidden;
-          background-color: #ffffff;
-          color: #1a1a2e;
+          background-color: #0f0f1a; /* Dark background */
+          color: #ffffff;
           transition: background-color 0.5s ease, color 0.5s ease;
         }
         * {
@@ -526,7 +539,7 @@ const ContactPage = () => {
           z-index: 20;
           margin: 4rem auto 5rem;
           padding: 3rem;
-          background: #ffffff;
+          background: linear-gradient(135deg, #b5d0fce7, #ffffff);
           border-radius: 24px;
           box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
           transition: background 0.5s ease, box-shadow 0.5s ease;
@@ -541,11 +554,12 @@ const ContactPage = () => {
           color: #1a1a2e;
           margin-bottom: 0.5rem;
           transition: color 0.5s ease;
+          text-align: center;
         }
         .section-subtitle {
-          font-size: 1.1rem;
+          font-size: 0.9rem;
           color: #6a6a80;
-          margin-bottom: 2.5rem;
+          margin-bottom: 3rem;
           transition: color 0.5s ease;
         }
         .info-list {

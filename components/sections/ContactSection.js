@@ -338,7 +338,8 @@ const ContactSection = () => {
             </form>
           </div>
         </div>
-      </div>
+      
+  
       {/* Office Location Map Section */}
       <ClientOnly>
         {markerIcon && (

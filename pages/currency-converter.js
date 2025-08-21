@@ -168,117 +168,132 @@ export default function CurrencyConverter() {
   </div>
 )}
 
-          <div className="main-grid">
-            <div style={styles.leftColumn}>
-              <div style={styles.card}>
-                <h2 style={styles.cardTitle}>
-                  <ArrowRightLeft style={styles.cardIcon} />
-                  Convert Currency
-                </h2>
-                
-                <div style={styles.formSection}>
-                  <div style={styles.inputGroup}>
-                    <label style={styles.label}>Amount</label>
-                    <input
-                      type="number"
-                      placeholder="0.00"
-                      value={amount}
-                      onChange={(e) => setAmount(e.target.value)}
-                      style={styles.input}
-                    />
-                  </div>
+          <div style={styles.mainGrid}>
+  <div style={styles.leftColumn}>
+    <div style={styles.card}>
+      <h2 style={styles.cardTitle}>
+        <ArrowRightLeft style={styles.cardIcon} />
+        Convert Currency
+      </h2>
+      
+      <div style={styles.formSection}>
+        <div style={styles.inputGroup}>
+          <label style={styles.label}>Amount</label>
+          <input
+            type="number"
+            placeholder="0.00"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            style={styles.input}
+          />
+        </div>
 
-                  <div style={styles.selectRow}>
-                    <CustomDropdown
-                      value={from}
-                      onChange={setFrom}
-                      isOpen={fromDropdownOpen}
-                      setIsOpen={setFromDropdownOpen}
-                      label="From"
-                    />
-                    <CustomDropdown
-                      value={to}
-                      onChange={setTo}
-                      isOpen={toDropdownOpen}
-                      setIsOpen={setToDropdownOpen}
-                      label="To"
-                    />
-                  </div>
+        <div style={styles.selectRow}>
+          <CustomDropdown
+            value={from}
+            onChange={setFrom}
+            isOpen={fromDropdownOpen}
+            setIsOpen={setFromDropdownOpen}
+            label="From"
+          />
+          <CustomDropdown
+            value={to}
+            onChange={setTo}
+            isOpen={toDropdownOpen}
+            setIsOpen={setToDropdownOpen}
+            label="To"
+          />
+        </div>
 
-                  <div style={styles.buttonRow}>
-                    <button onClick={swapCurrencies} style={styles.swapButton}>
-                      <ArrowRightLeft style={styles.buttonIcon} />
-                      Swap
-                    </button>
-                    <button onClick={convertCurrency} style={styles.convertButton}>
-                      Convert
-                    </button>
-                  </div>
+        <div style={styles.buttonRow}>
+          <button 
+            onClick={swapCurrencies} 
+            style={styles.swapButton}
+            onMouseOver={(e) => e.currentTarget.style.transform = styles.swapButtonHover.transform}
+            onMouseOut={(e) => e.currentTarget.style.transform = 'none'}
+          >
+            <ArrowRightLeft style={styles.buttonIcon} />
+            Swap
+          </button>
+          <button 
+            onClick={convertCurrency} 
+            style={styles.convertButton}
+            onMouseOver={(e) => e.currentTarget.style.transform = styles.convertButtonHover.transform}
+            onMouseOut={(e) => e.currentTarget.style.transform = 'none'}
+          >
+            Convert
+          </button>
+        </div>
 
-                  {showResult && (
-                    <div style={styles.resultCard}>
-                      <div style={styles.resultContent}>
-                        <p style={styles.resultLabel}>{amount} {from} equals</p>
-                        <p style={styles.resultAmount}>
-                          {converted} {CURRENCIES[to].symbol}
-                        </p>
-                        <p style={styles.resultRate}>
-                          Rate: 1 {from} = {RATES[from][to]} {to}
-                        </p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              <div style={styles.card}>
-                <h3 style={styles.sectionTitle}>Popular USD Rates</h3>
-                <div style={styles.popularGrid}>
-                  {popular.map((p) => (
-                    <div key={p.code} style={styles.popularCard}>
-                      <p style={styles.popularCode}>{p.code}</p>
-                      <p style={styles.popularValue}>{p.value} {p.symbol}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div style={styles.rightColumn}>
-              <div style={styles.card}>
-                <h2 style={styles.cardTitle}>
-                  <TrendingUp style={styles.cardIcon} />
-                  {from} → {to} Trend
-                </h2>
-                <div style={styles.chartContainer}>
-                  <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={graphData}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                      <XAxis dataKey="day" stroke="#64748b" />
-                      <YAxis stroke="#64748b" domain={['dataMin - 0.01', 'dataMax + 0.01']} />
-                      <Tooltip
-                        contentStyle={{
-                          backgroundColor: 'white',
-                          border: '1px solid #e2e8f0',
-                          borderRadius: '12px',
-                          color: '#334155',
-                          boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
-                        }}
-                      />
-                      <Line
-                        type="monotone"
-                        dataKey="value"
-                        stroke="#3b82f6"
-                        strokeWidth={2}
-                        dot={{ fill: '#3b82f6', strokeWidth: 2, r: 3 }}
-                        activeDot={{ r: 5, stroke: '#3b82f6', strokeWidth: 2 }}
-                      />
-                    </LineChart>
-                  </ResponsiveContainer>
-                </div>
-              </div>
+        {showResult && (
+          <div style={styles.resultCard}>
+            <div style={styles.resultContent}>
+              <p style={styles.resultLabel}>{amount} {from} equals</p>
+              <p style={styles.resultAmount}>
+                {converted} {CURRENCIES[to].symbol}
+              </p>
+              <p style={styles.resultRate}>
+                Rate: 1 {from} = {RATES[from][to]} {to}
+              </p>
             </div>
           </div>
+        )}
+      </div>
+    </div>
+
+    <div style={styles.card}>
+      <h3 style={styles.sectionTitle}>Popular USD Rates</h3>
+      <div style={styles.popularGrid}>
+        {popular.map((p) => (
+          <div 
+            key={p.code} 
+            style={styles.popularCard}
+            onMouseOver={(e) => e.currentTarget.style.boxShadow = styles.popularCardHover.boxShadow}
+            onMouseOut={(e) => e.currentTarget.style.boxShadow = styles.popularCard.boxShadow}
+          >
+            <p style={styles.popularCode}>{p.code}</p>
+            <p style={styles.popularValue}>{p.value} {p.symbol}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div style={styles.rightColumn}>
+    <div style={styles.card}>
+      <h2 style={styles.cardTitle}>
+        <TrendingUp style={styles.cardIcon} />
+        {from} → {to} Trend
+      </h2>
+      <div style={styles.chartContainer}>
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={graphData}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#4a5568" />
+            <XAxis dataKey="day" stroke="#a0aec0" />
+            <YAxis stroke="#a0aec0" domain={['dataMin - 0.01', 'dataMax + 0.01']} />
+            <Tooltip
+              contentStyle={{
+                backgroundColor: '#2d3748',
+                border: '1px solid #4a5568',
+                borderRadius: '12px',
+                color: '#e2e8f0',
+                boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.3)'
+              }}
+            />
+            <Line
+              type="monotone"
+              dataKey="value"
+              stroke="#63b3ed"
+              strokeWidth={2}
+              dot={{ fill: '#63b3ed', strokeWidth: 2, r: 3 }}
+              activeDot={{ r: 5, stroke: '#63b3ed', strokeWidth: 2 }}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
+  </div>
+</div>
         </div>
       </div>
 
