@@ -151,6 +151,10 @@ const Footer = () => {
           height: auto;
           margin-bottom: 1rem;
         }
+          .logo {
+  filter: brightness(0) invert(1);
+}
+
 
         .description {
           font-size: 0.9rem;
