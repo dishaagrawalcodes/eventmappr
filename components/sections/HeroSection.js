@@ -83,13 +83,6 @@ const HeroSection = () => {
               </span>
             </Link>
 
-           <Link href="/faq" legacyBehavior>
-  <a className="glass-btn secondary-glass">
-    <span className="btn-text">Learn More</span>
-  </a>
-</Link>
-
-
             <Link href={ROUTES.ABOUT}>
               <span className="glass-btn secondary-glass">
                 <span className="btn-text">Learn More</span>
